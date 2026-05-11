@@ -1,0 +1,287 @@
+:root {
+  --bg: #0a1020;
+  --surface: #101a30;
+  --surface-2: #162447;
+  --text: #ebf0ff;
+  --muted: #a5b1cf;
+  --accent: #7cf3bf;
+  --accent-2: #89a6ff;
+  --danger: #ff9a9e;
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Trebuchet MS", "Trebuchet", "Verdana", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(
+      circle at 10% -10%,
+      rgba(124, 243, 191, 0.16),
+      transparent 36%
+    ),
+    radial-gradient(circle at 100% 10%, rgba(137, 166, 255, 0.2), transparent 30%),
+    var(--bg);
+  color: var(--text);
+}
+
+body {
+  padding: 1rem;
+}
+
+#content,
+button,
+input,
+select {
+  font: inherit;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.topbar {
+  position: relative;
+  overflow: hidden;
+}
+
+.kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.badge-stack {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.pill {
+  padding: 0.42rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(20, 30, 52, 0.75);
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+form,
+.toolbar,
+.cta-row,
+.composer-actions,
+.stats,
+.timeline-head {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.composer-row,
+.toolbar,
+.cta-row {
+  margin-top: 0.7rem;
+}
+
+.composer-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+}
+
+.toolbar {
+  grid-template-columns: auto 1fr auto auto auto auto;
+  align-items: end;
+}
+
+.toolbar label,
+.composer-actions label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.toolbar input,
+.toolbar select,
+.composer-row input,
+.composer-actions select {
+  padding: 0.58rem 0.65rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--border);
+  background: #0d152a;
+  color: var(--text);
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.62rem 0.9rem;
+  color: #07211a;
+  background: linear-gradient(120deg, #64f0ba, #79c8ff);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button.ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+button.danger {
+  background: linear-gradient(120deg, #ff8e8e, #ff7070);
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.spacer {
+  min-width: 0.4rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.stats {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin-bottom: 0.75rem;
+}
+
+.stat {
+  background: #0f1730;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 0.7rem;
+  text-align: center;
+}
+
+.stat h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.stat p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.cta-row {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.task-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.task-item {
+  border: 1px solid var(--border);
+  background: #0d1325;
+  border-radius: 0.7rem;
+  padding: 0.7rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.task-item.completed .task-content {
+  opacity: 0.74;
+  text-decoration: line-through;
+}
+
+.task-content {
+  word-break: break-word;
+}
+
+.task-meta {
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.task-item button {
+  white-space: nowrap;
+}
+
+.timeline {
+  background: linear-gradient(180deg, #0a1326, #0e1934);
+}
+
+.timeline-head {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+ol#activity-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.empty {
+  color: var(--muted);
+  margin: 0.7rem 0 0;
+}
+
+li.activity-entry {
+  color: var(--text);
+}
+
+li.activity-entry time {
+  color: var(--muted);
+  margin-right: 0.45rem;
+}
+
+@media (max-width: 860px) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .composer-row,
+  .cta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .task-item {
+    grid-template-columns: auto 1fr auto;
+  }
+}

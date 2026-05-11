@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todoeth Modern</title>
+    <meta
+      name="description"
+      content="A modern UI layer for the legacy Todoeth functionality."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <p class="kicker">Legacy Repo Rebuilder</p>
+        <h1>Todoeth Modern Surface</h1>
+        <p class="subtitle">
+          Preserves the original Todoeth behavior while adding searchable tasks,
+          filters, persistence, import/export, and activity telemetry.
+        </p>
+        <div class="badge-stack">
+          <button id="wallet-toggle" class="ghost" type="button">
+            Connect wallet mock
+          </button>
+          <button id="seed-button" class="ghost" type="button">
+            Seed demo tasks
+          </button>
+          <span id="wallet-pill" class="pill" aria-live="polite">
+            Wallet: not connected
+          </span>
+        </div>
+      </header>
+
+      <section class="panel composer" aria-label="Task composer">
+        <form id="composer-form">
+          <label for="task-input">New task</label>
+          <div class="composer-row">
+            <input
+              id="task-input"
+              name="task-input"
+              type="text"
+              placeholder="Draft a clean, actionable task..."
+              maxlength="140"
+              autocomplete="off"
+              required
+            />
+            <button type="submit">Add task</button>
+          </div>
+          <div class="composer-actions">
+            <label class="inline">
+              <input id="auto-filter" type="checkbox" />
+              Auto-filter to active after add
+            </label>
+            <label class="inline" for="default-filter">Default filter:</label>
+            <select id="default-filter">
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+            </select>
+            <div class="spacer" aria-hidden="true"></div>
+            <span class="muted">Tip: press Enter to add</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel controls" aria-label="Task controls">
+        <div class="stats">
+          <article class="stat">
+            <h2 id="stat-total">0</h2>
+            <p>Total tasks</p>
+          </article>
+          <article class="stat">
+            <h2 id="stat-active">0</h2>
+            <p>Active</p>
+          </article>
+          <article class="stat">
+            <h2 id="stat-completed">0</h2>
+            <p>Completed</p>
+          </article>
+        </div>
+
+        <div class="toolbar">
+          <label for="search-input">Search</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="filter by keyword..."
+            autocomplete="off"
+          />
+
+          <label for="filter-select">View</label>
+          <select id="filter-select">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <label for="sort-select">Sort</label>
+          <select id="sort-select">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+          </select>
+
+          <label class="checkbox">
+            <input id="hide-completed" type="checkbox" />
+            Hide completed
+          </label>
+        </div>
+
+        <div class="cta-row">
+          <button id="mark-all-complete" type="button">
+            Mark all completed
+          </button>
+          <button id="clear-completed" type="button" class="danger">
+            Clear completed
+          </button>
+          <button id="import-button" type="button" class="ghost">
+            Import JSON
+          </button>
+          <button id="export-button" type="button" class="ghost">
+            Export JSON
+          </button>
+          <button id="snapshot-button" type="button">Copy snapshot</button>
+        </div>
+      </section>
+
+      <section class="panel task-area" aria-live="polite">
+        <h2>Tasks</h2>
+        <ul id="task-list" class="task-list" aria-label="Task list"></ul>
+        <p id="empty-state" class="empty">No tasks yet. Add one to begin.</p>
+      </section>
+
+      <section class="panel timeline" aria-label="Activity log">
+        <header class="timeline-head">
+          <h2>Activity timeline</h2>
+          <button id="clear-log" type="button" class="ghost">
+            Clear timeline
+          </button>
+        </header>
+        <ol id="activity-list"></ol>
+      </section>
+    </main>
+    <script src="app.js" defer></script>
+  </body>
+</html>
