@@ -44,4 +44,16 @@ contract("TodoList", () => {
       assert.include(error.message, "Task content cannot be empty");
     }
   });
+
+  it("rejects task content over 256 bytes", async () => {
+    const todoList = await TodoList.new();
+    const oversizedContent = new Array(258).join("x");
+
+    try {
+      await todoList.createTask(oversizedContent);
+      assert.fail("Expected oversized task content to be rejected");
+    } catch (error) {
+      assert.include(error.message, "Task content is too long");
+    }
+  });
 });

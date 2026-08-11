@@ -20,6 +20,7 @@ contract TodoList {
 	}
 	function createTask(string memory _content) public {
 		require(bytes(_content).length > 0, "Task content cannot be empty");
+		require(bytes(_content).length <= 256, "Task content is too long");
 		taskCount++;
 
 		// create a new task in the list `tasks`
