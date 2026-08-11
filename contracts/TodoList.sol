@@ -26,4 +26,9 @@ contract TodoList {
 
 	}
 
+	function toggleCompleted(uint _id) public {
+		require(_id > 0 && _id <= taskCount, "Task does not exist");
+		tasks[_id].completed = !tasks[_id].completed;
+	}
+
 }
