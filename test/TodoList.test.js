@@ -33,4 +33,15 @@ contract("TodoList", () => {
       assert.include(error.message, "Task does not exist");
     }
   });
+
+  it("rejects empty task content", async () => {
+    const todoList = await TodoList.new();
+
+    try {
+      await todoList.createTask("");
+      assert.fail("Expected empty task content to be rejected");
+    } catch (error) {
+      assert.include(error.message, "Task content cannot be empty");
+    }
+  });
 });

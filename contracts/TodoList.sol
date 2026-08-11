@@ -19,6 +19,7 @@ contract TodoList {
 		createTask("Pet Rythm or Kimchi");
 	}
 	function createTask(string memory _content) public {
+		require(bytes(_content).length > 0, "Task content cannot be empty");
 		taskCount++;
 
 		// create a new task in the list `tasks`
